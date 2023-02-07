@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<link id="stylesheet" rel="stylesheet" href="style.css"/>
+<script type="text/javascript" src="external.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;900&display=swap');
+</style>  
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hangman</title>
+</head>
+
+
+<body id="body">
+  <audio id="sound1" src="assets\Win_Sound.mp3" preload="auto"></audio>
+
+  <div id="loadingPage">
+
+    <div class="loadingPageFlex">
+
+      <div class="loadingPageItem titleFlex">
+        <p>HANGMAN</p>
+      </div>
+
+      <div class="loadingPageItem gameOptionFlex">
+        <ul>
+          <li>
+            <button onclick="loadGame(true)">Single Player</button>
+          </li>
+          <li>
+            <button onclick="loadGame(false)">Two Player</button>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="everything">
+    <div class="moreMenu" id="moreMenuDiv">
+      <div class="exitMenu" id="exitMenuButton">
+        <p class="menuPageButtons back" id="backButton" onclick="dropdownToggle(5)">Back</p>
+        <p class="menuPageButtons exit" id="exitButton" onclick="dropdownToggle(6)">Exit</p>
+      </div>
+
+      <div class = "menuContents" id="menuContentsFlex">
+        <div class="menuTitle mainMenuTitle" id="menuTitleText">
+          <p>More</p>
+        </div>
+        <div class="menuOptions">
+          <div class="themesButton" id="themesButtonText">
+            <p onclick="dropdownToggle(2)">Themes</p>
+          </div>
+          <!-- <div class="moreGames" id="moreGamesButton">
+            <p onclick="dropdownToggle(3)">More Games</p>
+          </div> -->
+          <div class="creditsScreen" id="creditsScreenButton">
+            <p onclick="dropdownToggle(4)">Credits</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="menuPages" id="menuPagesFlex">
+        <div class="themePage" id="themeContainer">
+          <div class="menuTitle themeTitle">
+            <p>Themes</p>
+          </div>
+
+          <div class="themesList">
+            <div class="themesRow" id="themesRowOne">
+              <div class="themeOption dayModeFlex" onclick="swapTheme('style.css', 1);">
+                <p class="themeOptionText" id="dayModeButton">Day Mode</p>
+              </div>
+              <div class="themeOption nightModeFlex" onclick="swapTheme('style2.css', 2);">
+                <p class="themeOptionText" id="nightModeButton">Night Mode</p>
+              </div>
+            </div>
+            <div class="themesRow" id="themesRowTwo">
+              <div class="themeOption terminalFlex" onclick="swapTheme('style3.css', 3);">
+                <p class="themeOptionText" id="terminalButton">80's Terminal</p>
+              </div>
+              <div class="themeOption retroFlex" onclick="swapTheme('style4.css', 4);">
+                <p class="themeOptionText" id="retrosButton">90's Website</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="moreGamesPage"  id="moreGamesContainer">
+          <div class="menuTitle moreGamesTitle">
+            <p>More Games</p>
+          </div>
+
+          <div class="otherGames">
+            <div class="otherGamesRow otherGamesRowOne">
+              <div class="gameBox">
+                Coming Soon!
+              </div>
+              <div class="gameBox">
+                Coming Soon!
+              </div>
+            </div>
+            <div  class="otherGamesRow otherGamesRowTwo">
+              <div class="gameBox">
+                Coming Soon!
+              </div>
+              <div class="gameBox">
+                Coming Soon!
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="creditsPage" id="creditsContainer">
+          <div class="menuTitle creditsTitle">
+            <p>Credits</p>
+          </div>
+          <div class="creditsInformation">
+            <div class="chunks chunkOne">
+              <p><strong>Developed by:</strong></p>
+              <p>Victor Alvarez</p>
+            </div>
+            <div class="chunks">
+              <p><strong>Fonts Provided By:</strong></p>
+              <a href="https://fonts.google.com/specimen/Montserrat">Google Fonts</a>
+            </div>
+            <div class="chunks chunkTwo">
+              <p><strong>Words gotten from:</strong></p>
+              <a href="https://github.com/first20hours/google-10000-english">worldlywisdom</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="mainGame">
+      <div class="menuFlex">
+
+        <div class="menu">
+          <div class="gameTitle">
+            <p>HANGMAN</p>
+          </div>
+          <div class="moreButton" id="moreButtonText">
+            <p onclick="dropdownToggle(1)" id="moreButton1">More</p>
+            <p id="moreButton2">More</p>
+            </div>
+          </div>
+      </div>
+      <div class="divForRetro">
+        <div id="instructions">
+          <p>Set the Word</p>
+        </div>
+      
+        <div class="inputBox" id ="boxForInput">
+          <input id="wordSetInput" type="text"/>
+        </div>
+      </div>
+    
+      <div class="gameplayDisplay" id="gameDisplay">
+        <div class="hangmanCenter">
+            <img src="assets\Strike_0.svg" id="hangmanCharacter"></img>
+          </div>
+    
+          <div class="wordDisplay" id="wordDisplay">
+            <p></p>
+          </div>
+    
+          <div class="hintDisplay" id="hintDisplay">
+            <p></p>
+          </div>
+
+          <div id="finalMessage">
+            <p id="message"></p>
+            <button onclick="restart()">Play Again?</button>
+          </div>
+      </div>
+
+
+      <div id="singlePlayer">
+        <div class="keyboardFlex guessingKeyboard" id="guessingKeyboardSinglePlayer">
+          <div class="keyboard" id="gamePlay">
+            <ul class="keyboardRow">
+              <li><button id="Qbtn1" onclick="guessCheck('Q', 'Qbtn1')">Q</button></li>
+              <li><button id="Wbtn1" onclick="guessCheck('W', 'Wbtn1')">W</button></li>
+              <li><button id="Ebtn1" onclick="guessCheck('E', 'Ebtn1')">E</button></li>
+              <li><button id="Rbtn1" onclick="guessCheck('R', 'Rbtn1')">R</button></li>  
+              <li><button id="Tbtn1" onclick="guessCheck('T', 'Tbtn1')">T</button></li>
+              <li><button id="Ybtn1" onclick="guessCheck('Y', 'Ybtn1')">Y</button></li>
+              <li><button id="Ubtn1" onclick="guessCheck('U', 'Ubtn1')">U</button></li>   
+              <li><button id="Ibtn1" onclick="guessCheck('I', 'Ibtn1')">I</button></li>
+              <li><button id="Obtn1" onclick="guessCheck('O', 'Obtn1')">O</button></li>
+              <li><button id="Pbtn1" onclick="guessCheck('P', 'Pbtn1')">P</button></li>
+            </ul>
+            <ul class="keyboardRow">
+              <li><button id="Abtn1" onclick="guessCheck('A', 'Abtn1')">A</button></li>  
+              <li><button id="Sbtn1" onclick="guessCheck('S', 'Sbtn1')">S</button></li>
+              <li><button id="Dbtn1" onclick="guessCheck('D', 'Dbtn1')">D</button></li>
+              <li><button id="Fbtn1" onclick="guessCheck('F', 'Fbtn1')">F</button></li> 
+              <li><button id="Gbtn1" onclick="guessCheck('G', 'Gbtn1')">G</button></li> 
+              <li><button id="Hbtn1" onclick="guessCheck('H', 'Hbtn1')">H</button></li> 
+              <li><button id="Jbtn1" onclick="guessCheck('J', 'Jbtn1')">J</button></li> 
+              <li><button id="Kbtn1" onclick="guessCheck('K', 'Kbtn1')">K</button></li>
+              <li><button id="Lbtn1" onclick="guessCheck('L', 'Lbtn1')">L</button></li>
+            </ul>
+            <ul class="keyboardRow">
+              <li><button id="Zbtn1" onclick="guessCheck('Z', 'Zbtn1')">Z</button></li>
+              <li><button id="Xbtn1" onclick="guessCheck('X', 'Xbtn1')">X</button></li>
+              <li><button id="Cbtn1" onclick="guessCheck('C', 'Cbtn1')">C</button></li>
+              <li><button id="Vbtn1" onclick="guessCheck('V', 'Vbtn1')">V</button></li>
+              <li><button id="Bbtn1" onclick="guessCheck('B', 'Bbtn1')">B</button></li>
+              <li><button id="Nbtn1" onclick="guessCheck('N', 'Nbtn1')">N</button></li>
+              <li><button id="Mbtn1" onclick="guessCheck('M', 'Mbtn1')">M</button></li>
+            </ul>
+          </div>
+
+          <div class="gameHint" id="gameHelp">
+            <div><button onclick="showHint()">Hint?</button></div>
+          </div>
+        </div>
+      </div>
+    
+      <div id="twoPlayer">
+        <div class="keyboardFlex" id="settingKeyboard">
+          <div class="keyboard" id="wordSet">
+            <ul class="keyboardRow">
+                <li><button onclick="set('Q')">Q</button></li>
+                <li><button onclick="set('W')">W</button></li>
+                <li><button onclick="set('E')">E</button></li>
+                <li><button onclick="set('R')">R</button></li>
+                <li><button onclick="set('T')">T</button></li>
+                <li><button onclick="set('Y')">Y</button></li>
+                <li><button onclick="set('U')">U</button></li>
+                <li><button onclick="set('I')">I</button></li>
+                <li><button onclick="set('O')">O</button></li>
+                <li><button onclick="set('P')">P</button></li>
+            </ul>
+            <ul class="keyboardRow">
+                <li><button onclick="set('A')">A</button></li>
+                <li><button onclick="set('S')">S</button></li>
+                <li><button onclick="set('D')">D</button></li>
+                <li><button onclick="set('F')">F</button></li>
+                <li><button onclick="set('G')">G</button></li>
+                <li><button onclick="set('H')">H</button></li>
+                <li><button onclick="set('J')">J</button></li>
+                <li><button onclick="set('K')">K</button></li>
+                <li><button onclick="set('L')">L</button></li>
+            </ul>
+            <ul class="keyboardRow">
+                <li><button onclick="set('Z')">Z</button></li>
+                <li><button onclick="set('X')">X</button></li>
+                <li><button onclick="set('C')">C</button></li>
+                <li><button onclick="set('V')">V</button></li>
+                <li><button onclick="set('B')">B</button></li>
+                <li><button onclick="set('N')">N</button></li>
+                <li><button onclick="set('M')">M</button></li>
+            </ul>
+            <ul class="keyboardRow bottomRow">
+              <li class="special" id="clear" onclick="del(false)"><button>Clear</button></li>
+              <li class="special" onclick="del(true)"><button>Backspace</button></li>
+              <li class="special" onclick="set(' ')"><button>Space</button></li> 
+              <li class="special" id="enter" onclick="wordSet()"><button>Enter</button></li>
+            </ul>
+          </div>
+        </div>
+    
+        <div class="keyboardFlex guessingKeyboard" id="guessingKeyboardTwoPlayer">
+          <div class="keyboard" id="gamePlay">
+            <ul class="keyboardRow">
+              <li><button id="Qbtn2" onclick="guessCheck('Q', 'Qbtn2')">Q</button></li>
+              <li><button id="Wbtn2" onclick="guessCheck('W', 'Wbtn2')">W</button></li>
+              <li><button id="Ebtn2" onclick="guessCheck('E', 'Ebtn2')">E</button></li>
+              <li><button id="Rbtn2" onclick="guessCheck('R', 'Rbtn2')">R</button></li>  
+              <li><button id="Tbtn2" onclick="guessCheck('T', 'Tbtn2')">T</button></li>
+              <li><button id="Ybtn2" onclick="guessCheck('Y', 'Ybtn2')">Y</button></li>
+              <li><button id="Ubtn2" onclick="guessCheck('U', 'Ubtn2')">U</button></li>   
+              <li><button id="Ibtn2" onclick="guessCheck('I', 'Ibtn2')">I</button></li>
+              <li><button id="Obtn2" onclick="guessCheck('O', 'Obtn2')">O</button></li>
+              <li><button id="Pbtn2" onclick="guessCheck('P', 'Pbtn2')">P</button></li>
+            </ul>
+            <ul class="keyboardRow">
+              <li><button id="Abtn2" onclick="guessCheck('A', 'Abtn2')">A</button></li>  
+              <li><button id="Sbtn2" onclick="guessCheck('S', 'Sbtn2')">S</button></li>
+              <li><button id="Dbtn2" onclick="guessCheck('D', 'Dbtn2')">D</button></li>
+              <li><button id="Fbtn2" onclick="guessCheck('F', 'Fbtn2')">F</button></li> 
+              <li><button id="Gbtn2" onclick="guessCheck('G', 'Gbtn2')">G</button></li> 
+              <li><button id="Hbtn2" onclick="guessCheck('H', 'Hbtn2')">H</button></li> 
+              <li><button id="Jbtn2" onclick="guessCheck('J', 'Jbtn2')">J</button></li> 
+              <li><button id="Kbtn2" onclick="guessCheck('K', 'Kbtn2')">K</button></li>
+              <li><button id="Lbtn2" onclick="guessCheck('L', 'Lbtn2')">L</button></li>
+            </ul>
+            <ul class="keyboardRow">
+              <li><button id="Zbtn2" onclick="guessCheck('Z', 'Zbtn2')">Z</button></li>
+              <li><button id="Xbtn2" onclick="guessCheck('X', 'Xbtn2')">X</button></li>
+              <li><button id="Cbtn2" onclick="guessCheck('C', 'Cbtn2')">C</button></li>
+              <li><button id="Vbtn2" onclick="guessCheck('V', 'Vbtn2')">V</button></li>
+              <li><button id="Bbtn2" onclick="guessCheck('B', 'Bbtn2')">B</button></li>
+              <li><button id="Nbtn2" onclick="guessCheck('N', 'Nbtn2')">N</button></li>
+              <li><button id="Mbtn2" onclick="guessCheck('M', 'Mbtn2')">M</button></li>
+            </ul>
+          </div>
+
+          <div class="gameHint" id="gameHelp2">
+            <div><button onclick="showHint()">Hint?</button></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>

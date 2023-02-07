@@ -1,0 +1,565 @@
+@font-face {
+  font-family: 'Terminal';
+  src: url(assets/3270-Regular.ttf);
+}
+
+@font-face{
+  font-family: 'retro';
+  src: url(assets/TIMESBD.TTF-24-Bold-e2ccd12c29de9f46f55f6b22d8e8c9f22147450fcc3ced5089199e105b7b2acf.woff)
+}
+
+body {
+  font-size: 2.5rem;
+  font-weight: 900;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #FAFAFA;
+  color: #050505;
+}
+
+.loadingPageFlex{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loadingPageItem{
+  display: flex;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+.titleFlex{
+  font-size: 8rem;
+  user-select: none;
+}
+
+.gameOptionFlex{
+  width: 100%;
+}
+
+.gameOptionFlex ul{
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+.gameOptionFlex ul li{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.gameOptionFlex ul li button{
+  background-color: #050505;
+  color: #FAFAFA;
+  font-size: 1.5rem;
+  border: 0.4rem solid #050505;
+  font-weight: 900;
+  border-radius: 5em;
+  text-align: center;
+  width: 50%;
+}
+
+.gameOptionFlex ul li button:hover{
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
+  color: #050505;
+  transition: 0.2s;
+}
+
+.moreMenu {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  justify-content: flex-start;
+  align-content: center;
+  box-shadow: 0 0 10rem black;
+  width: 29rem;
+  height: fit-content;
+  left: 0%;
+  right: 0%;
+  top:0%;
+  bottom: 0%;
+  z-index: 5;
+  margin: auto auto auto auto;
+  background-color: #FAFAFA;
+  border-radius: 2.5rem;
+  border: 0.4rem solid #050505;
+}
+
+.exitMenu{
+  display: flex;
+  justify-content: flex-end;
+  margin: 1.2rem 1.7rem 0;
+}
+
+.exitMenu p{
+  margin: 0 0 0 0;
+}
+
+.menuPageButtons{
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: rgba(05, 05, 05, .50);
+  text-align: center;
+}
+
+.menuPageButtons:hover{
+  color: #050505;
+}
+
+.back{
+  display: none;
+}
+
+.menuContents{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: center;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.menuTitle{
+  display: flex;
+  justify-content: center;
+}
+
+.menuTitle p{
+  margin: 0 0 0 0;
+}
+
+.menuOptions{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+
+.menuOptions p{
+  font-size: 2rem;
+  font-weight: 600;
+  color: rgba(05, 05, 05, .50);
+  margin: 3rem 0 0 0;
+}
+
+.menuOptions p:hover{
+  cursor: pointer;
+  color: rgba(05, 05, 05, 1);
+  transform: scale(105%);
+}
+.menuPages{
+  display: none;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.themePage{
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+.themesList{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-around;
+}
+
+.themesRow{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 30%;
+}
+
+.themeOption {
+  display: flex;
+  justify-content: center;
+  height: 110%;
+  width: 27.5%;
+  border: 0.4rem solid #050505;
+  border-radius: 1.5rem;
+}
+
+.themeOptionText{
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: rgba(05, 05, 05, .50);
+  text-align: center;
+  align-self: center;
+  margin: 1rem;
+  padding: 0.25rem
+}
+.themeOptionText:hover{
+  cursor: pointer;
+}
+
+.dayModeFlex:hover{
+  background-color: #FAFAFA;
+  cursor: pointer;
+}
+.dayModeFlex:hover #dayModeButton{
+  color: rgba(05, 05, 05, 1);
+}
+
+.nightModeFlex:hover{
+  background-color: #050505;
+  cursor: pointer;
+}
+.nightModeFlex:hover #nightModeButton{
+  color: #fafafa;
+}
+
+.terminalFlex:hover{
+  background-color: black;
+  cursor: pointer;
+}
+.terminalFlex:hover #terminalButton{
+  background-color: black;
+  color: #4bfe1e;
+  font-family: 'Terminal';
+}
+
+.retroFlex:hover{
+  background-color: #008080;
+  cursor: pointer;
+}
+.retroFlex:hover #retrosButton{
+  color: rgba(0, 0, 0, 1);
+  font-family: 'retro';
+  background-color: silver;
+  border-top: 0.1rem solid white;
+  border-left: 0.1rem solid white;
+  border-right: 0.1rem solid black;
+  border-bottom: 0.1rem solid black;
+  text-shadow: 0.08rem 0.08rem 1px rgb(121, 121, 121);
+}
+
+.moreGamesPage{
+  display: none;
+  flex-direction: column;
+  width: 100%;
+}
+.otherGames{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  width: 100%;
+}
+.otherGamesRow{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 30%;
+}
+
+.gameBox{
+  display: flex;
+  font-size: 1rem;
+  height: 110%;
+  width: 27.5%;
+  text-align: center;
+  border: 0.4rem solid #050505;
+  border-radius: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  opacity: .50;
+}
+.gameBox:hover{
+  opacity: 1;
+  cursor: pointer;
+  transition: 0.2s;  
+}
+
+.creditsPage{
+  display: none;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+
+}
+.creditsInformation{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.creditsInformation p{
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 0 0 0 0;
+}
+.creditsInformation a{
+  color: black;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.chunks{
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5rem;
+  align-items: center;
+}
+
+#mainGame{
+  display: none;
+  flex-direction: column;
+  z-index: 2;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  font-size: 2.5rem;
+  font-weight: 900;
+}
+.menu p{
+  margin: 0 0 0 0;
+}
+
+.gameTitle {
+  display: flex;
+  align-items: flex-start;
+  margin: 0 0.5rem 0 0;
+  padding: 0%;
+  user-select: none;
+  font-weight: 900;
+}
+
+.moreButton {
+  color: rgba(05,05,05,0.5);
+  padding: 0%;
+  transition: 0.2s;
+}
+.moreButton p:hover{
+  cursor: pointer;
+  color: rgba(05,05,05,1);
+  transition: 0.2s;
+}
+
+#moreButton2{
+  display: none;
+  user-select: none;
+  color: #050505;
+}
+
+#instructions {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  user-select: none;
+}
+
+#instructions p{
+  margin: 0 0 0 0;
+}
+
+.inputBox {
+  display: flex;
+  justify-content: center;
+}
+
+#wordSetInput {
+  width: 95%;
+  background-color: rgb(0,0,0,0);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3.4rem;
+  font-weight: 900;
+  border: 0;
+  text-align: center;
+  cursor: default;
+}
+
+.gameplayDisplay{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hangmanCenter {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  user-select: none;
+}
+
+#hangmanCharacter{
+  height: 20rem;
+  display: none;
+}
+
+.wordDisplay{
+  display: none;
+  font-size: 3.4rem;
+  font-weight: 900;
+  text-align: center;
+  letter-spacing: 0.25rem;
+  user-select: none;
+  margin-top: 3rem;
+}
+
+.hintDisplay{
+  display: none;
+  font-size: 2rem;
+  font-weight: 900;
+  text-align: center;
+  user-select: none;
+  margin-top: 1rem;
+}
+
+#finalMessage{
+  display: none;
+  flex-direction: column;
+}
+
+#message{
+  font-size: 4rem;
+  font-weight: 900;
+  text-align: center;
+  user-select: none;
+  margin: 3rem 0 3rem;
+}
+
+#finalMessage button{
+  background-color: rgba(05, 05, 05, 1);
+  color: #FAFAFA;
+  font-size: 1.5rem;
+  border: 0.4rem solid black;
+  font-weight: 900;
+  border-radius: 3em;
+  text-align: center;
+  align-items: center;
+}
+
+#finalMessage button:hover{
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
+  color: black;
+  transition: 0.2s;
+}
+
+ul {
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+}
+
+li {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.keyboardFlex{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1rem;
+  margin: 0 0 0 0;
+  position: fixed;
+  left: 0rem;
+  right: 0rem;
+  bottom: 2em;
+}
+
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+  width: 60%;
+}
+
+.guessingKeyboard {
+  display: none;
+}
+
+.guessingKeyboardOnePlayer{
+  display: none;
+}
+
+.keyboardRow{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0.25rem 0 0.25rem;
+  padding: 0%;
+}
+
+.keyboardRow li{
+  flex-basis: 0;
+  flex-grow: 1;
+  margin: 0 0.5rem 0;
+}
+
+.keyboardRow button {
+  min-width: 2em;
+  min-height: 2em;
+  background-color: rgba(05, 05, 05, 1);
+  color: #FAFAFA;
+  font-size: 1.16rem;
+  border: 0.4rem solid #050505;
+  font-weight: 900;
+  border-radius: 5em;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.keyboard button{
+  width: 100%;
+}
+
+.keyboard button:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
+  color: #050505;
+  transition: 0.2s;
+}
+
+#enter button:hover{
+  background-color: rgb(119, 231, 119);
+  transition: 0.2s;
+}
+
+#clear button:hover{
+  background-color: rgb(255, 63, 63);
+  transition: 0.2s;
+}
+
+.gameHint{
+  display: none;
+  flex-direction: row;
+  justify-content: flex-end;
+  position: absolute;
+  bottom: 0;
+  right: 2rem;
+}
+
+.gameHint button{
+  background-color: rgba(05, 05, 05, 1);
+  color: #FAFAFA;
+  font-size: 1.16rem;
+  border: 0.4rem solid #050505;
+  font-weight: 900;
+  border-radius: 2em;
+  width: 125%;
+}
+
+.gameHint button:hover{
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
+  color: #050505;
+  transition: 0.2s;
+}
